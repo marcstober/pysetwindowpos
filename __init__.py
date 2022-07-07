@@ -1,2 +1,1 @@
-import imp
 from setwindowpos import set_window_topmost
