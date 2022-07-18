@@ -17,12 +17,12 @@ def set_window_topmost(hwnd):
     SetWindowPos = user32.SetWindowPos
     SetWindowPos.argtypes = [HWND, HWND, c_int, c_int, c_int, c_int, UINT]
     SetWindowPos.restype = c_int
-    SetWindowPos.errcheck = errcheck
+    SetWindowPos.errcheck = _errcheck
 
     SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE)
 
 
-def errcheck(result, func, args):
+def _errcheck(result, func, args):
     if not result:
         raise WinError(get_last_error())
 
